@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, StatusBar } from 'react-native';
 
 import Weather from './Weather';
 
@@ -12,6 +12,9 @@ export default class App extends Component {
 
     return (
       <View style={styles.container}>
+        <StatusBar />
+        {/* <StatusBar hidden={true} barStyle="light-content"/> */}
+        {/* https://facebook.github.io/react-native/docs/statusbar */}
         { isLoaded ? 
         <Weather ></Weather>
          : 

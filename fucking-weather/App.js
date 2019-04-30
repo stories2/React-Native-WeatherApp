@@ -5,7 +5,8 @@ import Weather from './Weather';
 
 export default class App extends Component {
   state = {
-    isLoaded: false
+    isLoaded: false,
+    error: null,
   }
 
   componentDidMount() {
@@ -14,14 +15,18 @@ export default class App extends Component {
         this.setState({        
           isLoaded: true
         })
+        console.log("geo", position)
       },
       error => {
         console.log("geo", error)
+        this.setState({
+          error: error
+        })
       })
   }
 
   render() {
-    const { isLoaded } = this.state;
+    const { isLoaded, error } = this.state;
 
     return (
       <View style={styles.container}>
@@ -31,8 +36,8 @@ export default class App extends Component {
         { isLoaded ? 
         <Weather ></Weather>
          : 
-        <View style={styles.loading}>
-          <Text style={styles.loadingText}>Getting the fucking weather.</Text>
+        <View style={styles.loading}>          
+          {error ? <Text style={styles.errorText}>{error.message}</Text> : <Text style={styles.loadingText}>Getting the fucking weather.</Text>}
         </View>
       }
       </View>
@@ -55,5 +60,9 @@ const styles = StyleSheet.create({
   loadingText: {
     fontSize: 38,
     marginBottom: 24
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 40
   }
 });

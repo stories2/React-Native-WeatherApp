@@ -67,7 +67,7 @@ export default class App extends Component {
         {/* <StatusBar hidden={true} barStyle="light-content"/> */}
         {/* https://facebook.github.io/react-native/docs/statusbar */}
         { isLoaded ? 
-        <Weather temp={Math.floor(temperature - 273.15)} name={name} id={id}></Weather>
+        <Weather temp={Math.ceil(temperature - 273.15)} name={name} id={id}></Weather>
          : 
         <View style={styles.loading}>          
           {error ? <Text style={styles.errorText}>{error.message}</Text> : <Text style={styles.loadingText}>Getting the fucking weather.</Text>}

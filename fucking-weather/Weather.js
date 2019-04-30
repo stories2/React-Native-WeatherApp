@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import PropTypes from 'prop-types'
 
 // https://openweathermap.org/weather-conditions
@@ -10,43 +10,43 @@ const weatherCases = {
         colors: ["#00ECBC", "#007ADF"],
         title: "Thunderstorm in the house",
         subTitle: "Actually outside of the house.",
-        icon: "ios-thunderstorm"
+        icon: "weather-lightning-rainy"
     },
     Drizzle: {
         colors: ["#B9F7FE", "#66A6FF"],
         title: "Drizzle",
         subTitle: "Is like rain, but gay.",
-        icon: "ios-rainy-outline"
+        icon: "weather-hail"
     },
     Rain: {
         colors: ["#00C6FB", "#005BEA"],
         title: "Raining like a MF",
         subTitle: "For more info look outside.",
-        icon: "ios-rainy"
+        icon: "weather-rainy"
     },
     Snow: {
         colors: ["#7DE2FC", "#B9B6E5"],
         title: "Cold as balls",
         subTitle: "Do you want to build a snowman? Fuck no.",
-        icon: "ios-snow"
+        icon: "weather-snowy"
     },
     Atmosphere: {
         colors: ["#91FE91", "#8B3CAC"],
         title: "Atmosphere",
         subTitle: "ETC.",
-        icon: "ios-cloud-outline"
+        icon: "weather-fog"
     },
     Clear: {
         colors: ["#FEF253", "#FF7300"],
         title: "Sunny as fuck",
         subTitle: "Go get your ass burnt.",
-        icon: "ios-sunny"
+        icon: "weather-sunny"
     },
     Clouds: {
         colors: ["#D7D2CC", "#304352"],
         title: "Clouds",
         subTitle: "I know, fucking boring.",
-        icon: "ios-cloudy"
+        icon: "weather-cloudy"
     }
 }
 
@@ -68,7 +68,7 @@ function WeatherStateless({temp, name}) {
   return (
     <LinearGradient colors={weatherCases[name] ? weatherCases[name].colors : weatherCases.Atmosphere.colors } style={styles.container}>
       <View style={styles.upper}>
-        <Ionicons color="white" size={144} name={weatherCases[name] ? weatherCases[name].icon : weatherCases.Atmosphere.icon} />
+        <MaterialCommunityIcons color="white" size={144} name={weatherCases[name] ? weatherCases[name].icon : weatherCases.Atmosphere.icon} />
         <Text style={styles.temp}>{temp}°C</Text>
       </View>
       <View style={styles.lower}>

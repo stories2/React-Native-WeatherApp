@@ -16,13 +16,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    flexDirection: 'row'
   },
   redView: {
-    flex: 1,
+    // flex: 1,
+    width: 50,
+    height: 50,
     backgroundColor: 'red'
   },
   yellowView: {
-    flex: 1,
+    // flex: 1,
+    width: 50,
+    height: 50,
     backgroundColor: 'yellow'
   }
 });

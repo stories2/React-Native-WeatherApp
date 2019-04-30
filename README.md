@@ -12,6 +12,8 @@ yarn start
 
 And capture QR code using mobile phone.
 
+- 상황에 따라서는 `LAN` 옵션 대신 `TUNNEL`을 사용해야 빌드가 되는 경우가 있음
+
 ### Init
 
 ```

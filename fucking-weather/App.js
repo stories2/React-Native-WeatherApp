@@ -10,7 +10,8 @@ export default class App extends Component {
     isLoaded: false,
     error: null,
     temperature: null,
-    name: null
+    name: null,
+    id: null
   }
 
   componentDidMount() {
@@ -40,12 +41,14 @@ export default class App extends Component {
         })
       }
       else {
-        this.setState({
+        let model = {
           temperature: json.main.temp,
           name: json.weather[0].main,
-          isLoaded: true
-        })
-        console.log("state", this.state)
+          isLoaded: true,
+          id: json.weather[0].id
+        }
+        this.setState(model)
+        console.log("state", model)
       }
     })
     .catch(error => {
@@ -56,7 +59,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { isLoaded, error } = this.state;
+    const { isLoaded, error, temperature, name, id } = this.state;
 
     return (
       <View style={styles.container}>
@@ -64,7 +67,7 @@ export default class App extends Component {
         {/* <StatusBar hidden={true} barStyle="light-content"/> */}
         {/* https://facebook.github.io/react-native/docs/statusbar */}
         { isLoaded ? 
-        <Weather ></Weather>
+        <Weather temp={Math.floor(temperature - 273.15)} name={name} id={id}></Weather>
          : 
         <View style={styles.loading}>          
           {error ? <Text style={styles.errorText}>{error.message}</Text> : <Text style={styles.loadingText}>Getting the fucking weather.</Text>}
